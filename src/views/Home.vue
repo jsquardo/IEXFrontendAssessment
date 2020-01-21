@@ -1,35 +1,38 @@
 <template>
   <div>
-      <div class="primary-heading-con">
-          <div class="heading">
-              <div class="title">Welcome To Your Dev Assessment</div>
-          </div>
-      </div>
 
-      <div class="page-content-con has-text-centered m-lg">
-          <h1 class="heading is-size-1">Ready to get started?</h1>
-          <p>Consult the README in the repo for all the instructions you will need</p>
-          <p>Feel free to remove this page, rename things, and change anything. It's your assessment!</p>
-          <div class="m-t-lg">
-              <img src="../assets/image/get-ready.gif"/>
-          </div>
+    <div class="primary-heading-con">
+      <div class="container">
+          <div class="is-size-5 has-text-weight-bold">Stocks:</div>
       </div>
+    </div>
 
   </div>
 </template>
 
 <script>
-
+import API from '../api/IEX';
 export default {
-    name : 'home',
-
+    name : "Symbols",
     data () {
         return {
+            loading : true,
+            companies : [],
         };
     },
-
+    beforeMount () {
+        API.getCompanies().then(response => {
+            this.companies = response.data;
+        }).finally(() => {
+            this.loading = false;
+        });
+    },
 }
 </script>
 
 <style lang="scss" scoped>
+.app .primary-heading-con {
+  width: 100vw;
+  padding: 4px 7px;
+}
 </style>

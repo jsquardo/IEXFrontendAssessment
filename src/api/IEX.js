@@ -1,12 +1,17 @@
-import apiCreator from './util/ApiCreator';
+import apiCreator from "./util/ApiCreator";
 
-const api = apiCreator('https://cloud.iexapis.com/stable');
+const api = apiCreator("https://cloud.iexapis.com/stable");
 
-const token = 'sk_ab3b92699bb844e584c7108ffb977047';
-const collection = 'Airlines';
+const token = "sk_ab3b92699bb844e584c7108ffb977047";
+const collection = "Airlines";
 
 export default {
-    getCompanies () {
-        return api.get(`/stock/market/collection/tag?collectionName=${collection}&token=${token}`);
-    },
-}
+	getCompanies() {
+		return api.get(
+			`/stock/market/collection/tag?collectionName=${collection}&token=${token}`
+		);
+	},
+	getGainers() {
+		return api.get(`/stock/market/list/gainers?token=${token}`);
+	}
+};

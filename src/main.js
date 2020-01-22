@@ -4,6 +4,9 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 import interceptors from "./api/util/AxiosInterceptors";
+//Importying Buefy Library
+import Buefy from "buefy";
+import "buefy/dist/buefy.css";
 
 import VueNotification from "vue-notification";
 
@@ -48,6 +51,8 @@ import App from "./App.vue";
 Vue.config.productionTip = false;
 
 Vue.use(VueNotification);
+Vue.use(Buefy);
+Vue.use(Vuetable);
 
 axios.interceptors.response.use(interceptors.success, interceptors.error);
 
